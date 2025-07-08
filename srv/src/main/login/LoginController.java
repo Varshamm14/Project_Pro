@@ -1,30 +1,21 @@
 package customer.project_pro;
 
-
-import com.example.essportal.service.AuthService;
+import customer.project_pro.model.LoginRequest;
+import customer.project_pro.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/login")
 public class LoginController {
 
+    
     @Autowired
-    private AuthService authService;
+    private LoginService loginService;
 
-    @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Map<String, String> payload) {
-        String userId = payload.get("userId");
-        String password = payload.get("password");
-
-        boolean isValid = authService.login(userId, password);
-        if (isValid) {
-            return ResponseEntity.ok("Login successful");
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
-        }
+    @PostMapping
+    public String login(@RequestBody LoginRequest request) {
+        int status = loginService.checkLogin(request.getUsername(), request.getPassword());
+        return (status == 1) ? "Login Successful" : "Login Failed";
     }
 }
