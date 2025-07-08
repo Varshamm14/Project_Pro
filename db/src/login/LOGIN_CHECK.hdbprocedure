@@ -1,0 +1,25 @@
+PROCEDURE "login::LOGIN_CHECK"
+(
+    IN USERNAME NVARCHAR(50),
+    IN PASSWORD NVARCHAR(50),
+    OUT STATUS INTEGER
+)
+LANGUAGE SQLSCRIPT
+SQL SECURITY INVOKER
+AS
+BEGIN
+
+    DECLARE USER_COUNT INTEGER DEFAULT 0;
+
+    SELECT COUNT(*) 
+    INTO USER_COUNT
+    FROM "logins"  -- ✅ No schema name here!
+    WHERE "username" = :USERNAME AND "password" = :PASSWORD;
+
+    IF USER_COUNT > 0 THEN
+        STATUS := 1;
+    ELSE
+        STATUS := 0;
+    END IF;
+
+END;
