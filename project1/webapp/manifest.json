@@ -80,12 +80,14 @@
             "TargetView1"
           ]
         }
+        
       ],
       "targets": {
         "TargetView1": {
-          "id": "View1",
-          "name": "View1"
+          "id": "View",
+          "name": "View"
         }
+         
       }
     },
     "rootView": {

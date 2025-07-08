@@ -1,1 +1,57 @@
-/* Enter your custom styles here */
+.loginBackgroundPage {
+    background-image: url("../img/lap.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.loginWrapper {
+    width: 90vh;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginCardBox {
+    background: rgb(228, 215, 245);
+    border-radius: 15px;
+    padding: 2rem;
+    width: 400px;
+    height: 350x;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    animation: zoomFadeIn 0.7s ease-out forwards;
+}
+
+.loginTitleBox {
+    margin-bottom: 1rem;
+    /* Adds 1 line space below the "Login" text */
+}
+
+.loginInput {
+    margin-top: 2rem;
+}
+
+.loginOptions {
+    margin: 2rem 0;
+}
+
+.loginButton {
+    background-color: #bd8ee9 !important;
+    color: rgb(191, 159, 233) !important;
+    width: 40%;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    justify-content: center;
+}
+@keyframes zoomFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
