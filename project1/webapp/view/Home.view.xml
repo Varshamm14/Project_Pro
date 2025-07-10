@@ -1,0 +1,15 @@
+<mvc:View controllerName="project1.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page title="Employee Dashboard">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <Text text="Welcome to your dashboard!" />
+                <Button text="View Profile" press="onViewProfile" />
+                <Button text="Leave Requests" press="onLeaveRequest" />
+                <Button text="Payslips" press="onPayslip" />
+                <Button text="Logout" press="onLogout" />
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

@@ -28,40 +28,42 @@ sap.ui.define([
 
         // Event handler for the Sign In button press
         onPressLogin: function () {
-            var oModel = this.getView().getModel("loginMdl");
-            var sUsername = oModel.getProperty("/user_id");
-            var sPassword = oModel.getProperty("/password");
+            var oUsername = this.getView().byId("username").getValue();
+            var oPassword = this.getView().byId("password").getValue();
 
-            if (!sUsername || !sPassword) {
-                MessageBox.error("Please enter both username and password.");
-                return;
-            }
-
-            // Call Spring Boot backend API
-            fetch("/api/auth/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
+            var oData = {
+                username: oUsername,
+                password: oPassword
+            };
+            $.ajax({
+                url: "/api/login",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(oData),
+                success: function () {
+                    sap.m.MessageBox.success("Login successful!", {
+                        title: "Welcome",
+                        onClose: function () {
+                            // Navigate to another page or route
+                            var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+                            oRouter.navTo("Home"); // 👈 This assumes you’ve defined a 'Home' route
+                        }.bind(this)
+                    });
                 },
-                body: JSON.stringify({
-                    userId: sUsername,
-                    password: sPassword
-                })
-            })
-                .then(response => {
-                    if (response.ok) {
-                        return response.text(); // Expecting plain success message
-                    } else {
-                        throw new Error("Invalid credentials");
-                    }
-                })
-                .then(message => {
-                    MessageBox.success(message);
-                    this.oRouter.navTo("product");
-                })
-                .catch(error => {
-                    MessageBox.error(error.message);
-                });
+                error: function () {
+                    sap.m.MessageBox.error("Invalid username or password. Please try again.", {
+                        title: "Login Failed",
+                        actions: [sap.m.MessageBox.Action.OK],
+                        onClose: function () {
+                            // Optional: Do something when dialog closes
+                        }
+                    });
+                }
+
+
+            });
         }
+
+
     });
 });

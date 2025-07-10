@@ -79,15 +79,22 @@
           "target": [
             "TargetView1"
           ]
+        },
+        {
+          "pattern": "home",
+          "name": "Home",
+          "target": "home"
         }
-        
       ],
       "targets": {
         "TargetView1": {
           "id": "View",
           "name": "View"
         }
-         
+      },
+      "home": {
+        "viewName": "Home",
+        "viewLevel": 1
       }
     },
     "rootView": {

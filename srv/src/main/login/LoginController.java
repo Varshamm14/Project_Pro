@@ -1,21 +1,26 @@
 package customer.project_pro;
 
-import customer.project_pro.model.LoginRequest;
+import customer.project_pro.model.Login;
 import customer.project_pro.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/login")
+@RequestMapping("/api")
 public class LoginController {
 
-    
     @Autowired
-    private LoginService loginService;
+    private LoginService loginService; // 
 
-    @PostMapping
-    public String login(@RequestBody LoginRequest request) {
-        int status = loginService.checkLogin(request.getUsername(), request.getPassword());
-        return (status == 1) ? "Login Successful" : "Login Failed";
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody Login login) {
+        boolean isValid = loginService.loginCheck(login.getUsername(), login.getPassword());
+        if (isValid) {
+            return ResponseEntity.ok("Login Successful");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login Failed");
+        }
     }
 }

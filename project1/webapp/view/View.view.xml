@@ -13,10 +13,10 @@
                     </HBox>
 
                     <Label text="Name" class="sapUiSmallMarginTop" />
-                    <Input icon="sap-icon://person-placeholder" placeholder="Enter your name" value="{loginMdl>/name}" class="loginInput" />
+                    <Input id="username" icon="sap-icon://person-placeholder" placeholder="Enter your name" value="{loginMdl>/name}" class="loginInput" />
 
                     <Label text="Password" class="sapUiSmallMarginTop" />
-                    <Input icon="sap-icon://lock" placeholder="Enter your password" type="Password" value="{loginMdl>/password}" class="loginInput" />
+                    <Input id="password" icon="sap-icon://lock" placeholder="Enter your password" type="Password" value="{loginMdl>/password}" class="loginInput" />
                     <HBox justifyContent="SpaceBetween" class="loginOptions">
                         <CheckBox text="Remember me" />
                         <Link text="Forgot password?" />
