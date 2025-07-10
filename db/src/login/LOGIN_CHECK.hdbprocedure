@@ -13,7 +13,7 @@ BEGIN
 
     SELECT COUNT(*) 
     INTO USER_COUNT
-    FROM "logins"  -- ✅ No schema name here!
+    FROM "logins" 
     WHERE "username" = :USERNAME AND "password" = :PASSWORD;
 
     IF USER_COUNT > 0 THEN
