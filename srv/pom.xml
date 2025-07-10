@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -19,18 +20,19 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-jdbc</artifactId>
-            </dependency>
 
-            <dependency>
-                <groupId>com.sap.cloud.db.jdbc</groupId>
-                <artifactId>ngdbc</artifactId>
-                <version>2.14.16</version>
-            </dependency>
-        </dependencies>
+        <!-- Spring Boot JDBC -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <!-- SAP HANA JDBC -->
+        <dependency>
+            <groupId>com.sap.cloud.db.jdbc</groupId>
+            <artifactId>ngdbc</artifactId>
+            <version>2.24.8</version>
+        </dependency>
 
         <!-- DevTools -->
         <dependency>
@@ -64,13 +66,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <!-- SAP HANA JDBC -->
-        <dependency>
-            <groupId>com.sap.cloud.db.jdbc</groupId>
-            <artifactId>ngdbc</artifactId>
-            <version>2.24.8</version>
         </dependency>
 
         <!-- CDS Cloud Foundry -->
@@ -111,5 +106,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
