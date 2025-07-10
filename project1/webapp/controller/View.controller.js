@@ -31,15 +31,17 @@ sap.ui.define([
             var oUsername = this.getView().byId("username").getValue();
             var oPassword = this.getView().byId("password").getValue();
 
-            var oData = {
-                username: oUsername,
-                password: oPassword
-            };
+
+            console.log("Username:", username);
+            console.log("Password:", password);
             $.ajax({
                 url: "/api/login",
                 type: "POST",
                 contentType: "application/json",
-                data: JSON.stringify(oData),
+                data: JSON.stringify({
+                    username: username,
+                    password: password
+                }),
                 success: function () {
                     sap.m.MessageBox.success("Login successful!", {
                         title: "Welcome",

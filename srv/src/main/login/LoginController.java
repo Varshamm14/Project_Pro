@@ -12,15 +12,19 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
 
     @Autowired
-    private LoginService loginService; // 
+    private LoginService loginService; //
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody Login login) {
+        System.out.println("USERNAME from UI: " + login.getUsername());
+        System.out.println("PASSWORD from UI: " + login.getPassword());
+
         boolean isValid = loginService.loginCheck(login.getUsername(), login.getPassword());
         if (isValid) {
-            return ResponseEntity.ok("Login Successful");
+            return ResponseEntity.ok("Login success");
         } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login Failed");
+            return ResponseEntity.status(401).body("Invalid credentials");
         }
     }
+
 }
